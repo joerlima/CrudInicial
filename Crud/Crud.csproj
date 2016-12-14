@@ -182,6 +182,10 @@
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\UsuarioController.cs" />
     <Compile Include="Database\Mappers\App\UsuarioMap.cs" />
+    <Compile Include="Migrations\201612141614020_Migracao.cs" />
+    <Compile Include="Migrations\201612141614020_Migracao.Designer.cs">
+      <DependentUpon>201612141614020_Migracao.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\App\Usuario.cs" />
     <Compile Include="Database\DbCrud.cs" />
@@ -1032,6 +1036,11 @@
     <Content Include="packages.config">
       <SubType>Designer</SubType>
     </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\201612141614020_Migracao.resx">
+      <DependentUpon>201612141614020_Migracao.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
