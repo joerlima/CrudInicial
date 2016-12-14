@@ -1,0 +1,77 @@
+﻿
+<div data-ng-init="usuarios.consultar()">
+    <div class="panel panel-primary">
+        <div class="panel-heading">Usuários</div>
+        <div class="panel-body">
+            <div class="alert alert-success" data-ng-show="usuarios.info">
+                <button type="button" class="close" data-ng-click="usuarios.info = null">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+                <span data-ng-bind="usuarios.info"></span>
+            </div>
+            <div class="form-group">
+                <button type="button" class="btn btn-success"
+                        data-ng-click="usuarios.novo()"
+                        data-toggle="modal" data-target="#modalUsuario">
+                    <span class="glyphicon glyphicon-plus"></span>
+                    &nbsp;
+                    Novo
+                </button>
+            </div>
+            <div>
+                <label>Search: <input data-ng-model="usuarios.pesquisa"></label>
+            </div>
+            <div class="table-responsive">
+                <table class="table table-hover table-condensed">
+                    <thead>
+                        <tr>
+                            <th>#</th>
+                            <th>Nome</th>
+                            <th>E-mail</th>
+                            <th>Cpf</th>
+                            <th style="width: 130px; text-align: center;">Ações</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr data-ng-repeat="usuario in usuarios.cadastrados | filter:usuarios.pesquisa">
+                            <td data-ng-bind="usuario.idUsuario"></td>
+                            <td data-ng-bind="usuario.nome"></td>
+                            <td data-ng-bind="usuario.email"></td>
+                            <td data-ng-bind="usuario.cpf"></td>
+                            <td class="text-center">
+                                <button type="button"
+                                        class="btn btn-sm btn-primary"
+                                        data-ng-click="usuarios.selecionar(usuario)"
+                                        data-toggle="modal" data-target="#modalDadosUsuario">
+                                    <span class="glyphicon glyphicon-search"></span>
+                                </button>
+                                <button type="button"
+                                        class="btn btn-sm btn-warning"
+                                        data-ng-click="usuarios.selecionar(usuario)"
+                                        data-toggle="modal" data-target="#modalUsuario">
+                                    <span class="glyphicon glyphicon-pencil"></span>
+                                </button>
+                                <button type="button"
+                                        class="btn btn-sm btn-danger"
+                                        data-ng-click="usuarios.selecionar(usuario)"
+                                        data-toggle="modal" data-target="#modalDeletarUsuario">
+                                    <span class="glyphicon glyphicon-trash"></span>
+                                </button>
+                            </td>
+                        </tr>
+                    </tbody>
+                    <tfoot>
+                        <tr data-ng-show="usuarios.cadastrados.length == 0">
+                            <td>
+                                <em>Não existem usuários cadastrados para esta consulta.</em>
+                            </td>
+                        </tr>
+                    </tfoot>
+                </table>
+            </div>
+        </div>
+        @Html.Partial("~/Views/Usuario/Modal/ModalUsuario.cshtml")
+        @Html.Partial("~/Views/Usuario/Modal/ModalDadosUsuario.cshtml")
+        @Html.Partial("~/Views/Usuario/Modal/ModalDeletarUsuario.cshtml")
+    </div>
+</div>

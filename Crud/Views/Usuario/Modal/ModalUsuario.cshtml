@@ -1,0 +1,63 @@
+﻿<div id="modalUsuario" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+
+        <!-- Modal content-->
+        <div class="modal-content">
+            <form novalidate name="formUsuario" data-ng-submit="usuarios.modal.salvar()">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title">Cadastrar Usuário</h4>
+                </div>
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="col-md-6 col-sm-6 col-xs-6">
+                            <div class="form-group" data-ng-class="{'has-error':formUsuario.nome.$invalid}">
+                                <label>Nome</label>
+                                <input class="form-control"
+                                       name="nome"
+                                       data-ng-model="usuarios.usuario.nome"
+                                       maxlength="150"
+                                       required />
+                            </div>
+                        </div>
+
+                        <div class="col-md-6 col-sm-6 col-xs-6">
+                            <div class="form-group">
+                                <label>Cpf</label>
+                                <input class="form-control"
+                                       data-ng-model="usuarios.usuario.cpf"
+                                       data-app-mascara="000.000.000-00" />
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6 col-sm-6 col-xs-6">
+                            <div class="form-group" data-ng-class="{'has-error':formUsuario.email.$invalid}">
+                                <label>E-mail</label>
+                                <input class="form-control"
+                                       name="email"
+                                       data-ng-model="usuarios.usuario.email"
+                                       maxlength="100"
+                                       required />
+                            </div>
+                        </div>
+                        <div class="col-md-6 col-sm-6 col-xs-6">
+                            <div class="form-group">
+                                <label>Telefone</label>
+                                <input class="form-control"
+                                       name="telefone"
+                                       data-ng-model="usuarios.usuario.telefone"
+                                       data-app-mascara="(00) 0000-0000"
+                                       maxlength="14"/>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="submit" class="btn btn-success"  data-ng-disabled="formUsuario.$invalid">Salvar</button>
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Fechar</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
